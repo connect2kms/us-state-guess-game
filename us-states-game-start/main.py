@@ -20,10 +20,13 @@ while len(guessed_state) < 50:
     user_state = user_state.title()
 
     if user_state == "Exit":
-        missing_state = []
-        for state in state_name:
-            if state not in guessed_state:
-                missing_state.append(state)
+        # missing_state = []
+        # for state in state_name:
+        #     if state not in guessed_state:
+        #         missing_state.append(state)
+
+        missing_state = [state for state in state_name if state not in guessed_state]
+
         missed_data = pandas.DataFrame(missing_state)
         missed_data.to_csv("missed_data.csv")
         break
